@@ -1,5 +1,10 @@
 http://ruby.bastardsbook.com/chapters/html-parsing/
 
+Le web scrapping est une technique d'extraction des données d'un site.
+1) il faut appeler les données. On se connecte au site pour les appeler
+2) on va choisir ce qu'on va en faire.
+
+
 Open uri
 permet d'encapsuler tout le travail via une requête HTTP dans
 la méthode Open, rendant l'opération aussi simple que l'ouverture d'un fichier
@@ -9,6 +14,3 @@ require 'open-uri'
 
 page = Nokogiri::HTML(open("http://en.wikipedia.org/"))
 puts page.class   # => Nokogiri::HTML::Document
-
-
-??? Rest client ???

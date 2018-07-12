@@ -2,12 +2,18 @@ require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 
-page = Nokogiri::HTML(open("http://annuaire-des-mairies.com/val-d-oise.html"))
-link = page.css (".lientxt")
-  link.each do |x|
-    link_bis = "http://annuaire-des-mairies#{x["href"]}"
-    puts link_bis
-#On dit à Nokogiri d'aller chercher tous les liens de link_bis (parce qu'il n'y a que de sliens dans linkbis)
-  page = Nokogiri::HTML(open(link_bis))
-    puts page.css ("/html/body/div/main/section[2]/div/table/tbody/tr[4]/td[2]").text
-  end
+
+def darktrader
+currency_name = []
+page = Nokogiri::HTML(open("https://coinmarketcap.com/all/views/all/")).css(".currency-name-container").each do |item|
+  name = item.text
+  currency_name << name
+end
+currency_price = []
+page = Nokogiri::HTML(open("https://coinmarketcap.com/all/views/all/")).css(".price").each do |item|
+  price = item.text
+  currency_price << price
+end
+puts Hash[currency_name.zip(currency_price)]
+end
+darktrader
