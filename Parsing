@@ -1,0 +1,14 @@
+http://ruby.bastardsbook.com/chapters/html-parsing/
+
+Open uri
+permet d'encapsuler tout le travail via une requête HTTP dans
+la méthode Open, rendant l'opération aussi simple que l'ouverture d'un fichier
+sur notre propre disque dur :
+=>
+require 'open-uri'
+
+page = Nokogiri::HTML(open("http://en.wikipedia.org/"))
+puts page.class   # => Nokogiri::HTML::Document
+
+
+??? Rest client ???
